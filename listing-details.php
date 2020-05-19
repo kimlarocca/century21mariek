@@ -45,7 +45,7 @@ if (isset($_GET['listingID'])) {
 }
 mysqli_select_db($cms, $database_cms);
 $query_listing = sprintf("SELECT * FROM listings  LEFT JOIN (SELECT photoAlbums.albumID,photoAlbums.coverPhotoID,photoAlbums.albumName,photos.id,photos.file_name FROM photoAlbums,photos WHERE photoAlbums.coverPhotoID=photos.id)  AS a ON listings.albumID=a.albumID  WHERE listingID = %s", GetSQLValueString($colname_listing, "int"));
-$listing = mysql_query($query_listing, $cms) or die(mysqli_error($cms));
+$listing = mysqli_query($cms, $query_listing) or die(mysqli_error($cms));
 $row_listing = mysqli_fetch_assoc($listing);
 $totalRows_listing = mysqli_num_rows($listing);
 
@@ -53,7 +53,7 @@ if ($row_listing['albumID'] != NULL){
 
 mysqli_select_db($cms, $database_cms);
 $query_photos = "SELECT * FROM photos WHERE albumID = ".$row_listing['albumID']." ORDER BY photoSequence ASC";
-$photos = mysql_query($query_photos, $cms) or die(mysqli_error($cms));
+$photos = mysqli_query($cms, $query_photos) or die(mysqli_error($cms));
 $row_photos = mysqli_fetch_assoc($photos);
 $totalRows_photos = mysqli_num_rows($photos);
 
@@ -265,9 +265,9 @@ jQuery(document).ready(function() {
 </body>
 <!-- InstanceEnd --></html>
 <?php
-mysql_free_result($listing);
+mysqli_free_result($listing);
 
-mysql_free_result($photos);
+mysqli_free_result($photos);
 
-mysql_free_result($websiteInfo);
+mysqli_free_result($websiteInfo);
 ?>

@@ -78,8 +78,10 @@ $pageTitle = $row_currentPage['pageTitle'];
     <ul>
       <li><a href="index.php">Home</a></li>
       <li><a href="listings.php">Listings</a></li>
+      <li><a href="open-houses.php">Open Houses</a></li>
       <li><a href="about.php">About Us</a></li>
       <li><a href="meet-our-team.php">Meet Our Team</a></li>
+      <li><a href="localInfo.php">Local Info</a></li>
       <li><a href="resources.php">Resources</a></li>
       <li><a href="search.php">Search The MLS</a></li>
       <li><a href="careers.php">Careers With Us</a></li>
@@ -107,7 +109,7 @@ $pageTitle = $row_currentPage['pageTitle'];
   </div>
   <div class="triangle">
     <svg id="bigTriangleColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 102" preserveAspectRatio="none">
-      <path style="fill:#4b8db1;" d="M0 0 L50 100 L100 0 Z" />
+      <path style="fill:#f5c924;" d="M0 0 L50 100 L100 0 Z" />
     </svg>
   </div>
   <div class="main">
@@ -121,9 +123,11 @@ $pageTitle = $row_currentPage['pageTitle'];
       <div class="wf_column wf_two">
         <h2><a href="index.php">Home</a> | <a href="about.php">About Us</a> | <a href="meet-our-team.php">Meet Our Team</a> | <a href="listings.php">Listings</a> | <a href="search.php">Property Search</a> | <a href="contact.php">Contact Us</a></h2>
         <p>Copyright &copy; <?php echo $row_websiteInfo['firstName']; ?> <?php echo $row_websiteInfo['lastName']; ?> <?php echo date("Y"); ?>, All Rights Reserved.</p>
+        <p>©2016 CENTURY 21 Marie K. Butler R.E. CENTURY 21® and the CENTURY 21 Logo are registered service marks owned by Century 21 Real Estate LLC. Equal Housing Opportunity. Each office is independently owned and operated.</p>
         <p>Web Design by <a href="http://www.4siteusa.com">4 Site</a>.</p>
       </div>
       <div class="wf_column wf_two wf_text_right">
+      	<p><img src="images/CENTURY21.png" width="218" height="96" alt=""/></p>
         <h2><?php echo $row_websiteInfo['companyName']; ?></h2>
         <p><?php echo $row_websiteInfo['iaddress']; ?></p>
         <?php if ($row_websiteInfo['iaddress2'] <> ''){ ?>

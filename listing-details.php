@@ -41,21 +41,21 @@ if (!function_exists("GetSQLValueString")) {
 
 $colname_listing = "-1";
 if (isset($_GET['listingID'])) {
-    $colname_listing = $_GET['listingID'];
+  $colname_listing = $_GET['listingID'];
 }
 mysqli_select_db($cms, $database_cms);
 $query_listing = sprintf("SELECT * FROM listings  LEFT JOIN (SELECT photoAlbums.albumID,photoAlbums.coverPhotoID,photoAlbums.albumName,photos.id,photos.file_name FROM photoAlbums,photos WHERE photoAlbums.coverPhotoID=photos.id)  AS a ON listings.albumID=a.albumID  WHERE listingID = %s", GetSQLValueString($colname_listing, "int"));
-$listing = mysqli_query($cms, $query_listing) or die(mysqli_error($cms));
+$listing = mysql_query($query_listing, $cms) or die(mysqli_error($cms));
 $row_listing = mysqli_fetch_assoc($listing);
 $totalRows_listing = mysqli_num_rows($listing);
-$totalRows_photos = 0;
+
 if ($row_listing['albumID'] != NULL){
 
-    mysqli_select_db($cms, $database_cms);
-    $query_photos = "SELECT * FROM photos WHERE albumID = ".$row_listing['albumID']." ORDER BY photoSequence ASC";
-    $photos = mysqli_query($cms, $query_photos) or die(mysqli_error($cms));
-    $row_photos = mysqli_fetch_assoc($photos);
-    $totalRows_photos = mysqli_num_rows($photos);
+mysqli_select_db($cms, $database_cms);
+$query_photos = "SELECT * FROM photos WHERE albumID = ".$row_listing['albumID']." ORDER BY photoSequence ASC";
+$photos = mysql_query($query_photos, $cms) or die(mysqli_error($cms));
+$row_photos = mysqli_fetch_assoc($photos);
+$totalRows_photos = mysqli_num_rows($photos);
 
 }
 
@@ -99,8 +99,10 @@ if ($row_listing['propertyLocation'] != '') $pageTitle = $row_listing['propertyL
     <ul>
       <li><a href="index.php">Home</a></li>
       <li><a href="listings.php">Listings</a></li>
+      <li><a href="open-houses.php">Open Houses</a></li>
       <li><a href="about.php">About Us</a></li>
       <li><a href="meet-our-team.php">Meet Our Team</a></li>
+      <li><a href="localInfo.php">Local Info</a></li>
       <li><a href="resources.php">Resources</a></li>
       <li><a href="search.php">Search The MLS</a></li>
       <li><a href="careers.php">Careers With Us</a></li>
@@ -127,7 +129,7 @@ if ($row_listing['propertyLocation'] != '') $pageTitle = $row_listing['propertyL
     <h1><?php echo $row_listing['propertyLocation']; ?></h1>
   </div>
   <div class="triangle"> <svg id="bigTriangleColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 102" preserveAspectRatio="none">
-    <path style="fill:#4b8db1;" d="M0 0 L50 100 L100 0 Z" />
+    <path style="fill:#f5c924;" d="M0 0 L50 100 L100 0 Z" />
     </svg> </div>
   <div class="main">
   <!-- listing photos -->
@@ -136,7 +138,9 @@ if ($totalRows_photos>0){
 ?>
   <div class="main-gallery">
     <?php do {
+	if($row_photos['file_name']!=''){
   list($width, $height) = getimagesize('http://4siteusa.com/uploads/'.$row_photos['file_name']);
+	}
   ?>
     <div class="gallery-cell" style="width:<?php echo $width ?>px; height:auto;"><img width="<?php echo $width ?>" height="<?php echo $height ?>" src="http://4siteusa.com/uploads/<?php echo $row_photos['file_name']; ?>"/></div>
     <?php } while ($row_photos = mysqli_fetch_assoc($photos)); ?>
@@ -223,9 +227,11 @@ if ($totalRows_photos>0){
       <div class="wf_column wf_two">
         <h2><a href="index.php">Home</a> | <a href="about.php">About Us</a> | <a href="meet-our-team.php">Meet Our Team</a> | <a href="listings.php">Listings</a> | <a href="search.php">Property Search</a> | <a href="contact.php">Contact Us</a></h2>
         <p>Copyright &copy; <?php echo $row_websiteInfo['firstName']; ?> <?php echo $row_websiteInfo['lastName']; ?> <?php echo date("Y"); ?>, All Rights Reserved.</p>
+        <p>©2016 CENTURY 21 Marie K. Butler R.E. CENTURY 21® and the CENTURY 21 Logo are registered service marks owned by Century 21 Real Estate LLC. Equal Housing Opportunity. Each office is independently owned and operated.</p>
         <p>Web Design by <a href="http://www.4siteusa.com">4 Site</a>.</p>
       </div>
       <div class="wf_column wf_two wf_text_right">
+      	<p><img src="images/CENTURY21.png" width="218" height="96" alt=""/></p>
         <h2><?php echo $row_websiteInfo['companyName']; ?></h2>
         <p><?php echo $row_websiteInfo['iaddress']; ?></p>
         <?php if ($row_websiteInfo['iaddress2'] <> ''){ ?>

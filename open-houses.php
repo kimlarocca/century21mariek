@@ -35,7 +35,7 @@ function GetSQLValueString($theValue, $theType, $theDefinedValue = "", $theNotDe
 }
 
 mysqli_select_db($cms, $database_cms);
-$query_Recordset1 = "SELECT * FROM listings  LEFT JOIN (SELECT photoAlbums.albumID,photoAlbums.coverPhotoID,photoAlbums.albumName,photos.id,photos.file_name FROM photoAlbums,photos WHERE photoAlbums.coverPhotoID=photos.id)  AS a ON listings.albumID=a.albumID  WHERE listings.websiteID = ".$websiteID." ORDER BY listings.listingID DESC";
+$query_Recordset1 = "SELECT * FROM listings  LEFT JOIN (SELECT photoAlbums.albumID,photoAlbums.coverPhotoID,photoAlbums.albumName,photos.id,photos.file_name FROM photoAlbums,photos WHERE photoAlbums.coverPhotoID=photos.id)  AS a ON listings.albumID=a.albumID  WHERE listings.customField='Open House' AND listings.websiteID = ".$websiteID;
 $Recordset1 = mysqli_query($cms, $query_Recordset1) or die(mysqli_error($cms));
 $row_Recordset1 = mysqli_fetch_assoc($Recordset1);
 $totalRows_Recordset1 = mysqli_num_rows($Recordset1);
@@ -53,7 +53,7 @@ $row_websiteInfo = mysqli_fetch_assoc($websiteInfo);
 $totalRows_websiteInfo = mysqli_num_rows($websiteInfo);
 ?>
 <?php
-$pageTitle = $row_currentPage['pageTitle'];
+$pageTitle = "open Houses";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt.php" codeOutsideHTMLIsLocked="false" -->
@@ -61,7 +61,7 @@ $pageTitle = $row_currentPage['pageTitle'];
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title><?php echo $row_websiteInfo['companyName']; ?> |<?php echo $row_currentPage['pageTitle']; ?></title>
+<title><?php echo $row_websiteInfo['companyName']; ?> | <?php echo $pageTitle ?></title>
 <!-- InstanceEndEditable -->
 <link rel="stylesheet" type="text/css" href="styles/WickedNav.css"/>
 <link rel="stylesheet" type="text/css" href="styles/Wicked.css"/>
@@ -111,7 +111,7 @@ $pageTitle = $row_currentPage['pageTitle'];
 <div class="content">
 <!-- InstanceBeginEditable name="mainContent" -->
   <div class="header">
-    <h1><?php echo $row_currentPage['pageTitle']; ?></h1>
+    <h1><?php echo $pageTitle ?></h1>
   </div>
   <div class="triangle"> <svg id="bigTriangleColor" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100" viewBox="0 0 100 102" preserveAspectRatio="none">
     <path style="fill:#f5c924;" d="M0 0 L50 100 L100 0 Z" />

@@ -118,6 +118,10 @@ $pageTitle = "open Houses";
     </svg> </div>
   <div class="main">
 
+      <?php
+      if($totalRows_Recordset1 > 0){
+      ?>
+      ?>
     <!-- listings grid -->
     <!-- grid -->
     <div class="masonry js-masonry"  data-masonry-options='{ "isFitWidth": true }'>
@@ -149,6 +153,13 @@ $pageTitle = "open Houses";
           </a> </div>
         <?php } while ($row_Recordset1 = mysqli_fetch_assoc($Recordset1)); ?>
     </div>
+      <?php
+      } else {
+          ?>
+          <p>Sorry, there are no open houses at this time. Please check back again soon!</p>
+      <?php
+      }
+      ?>
   </div>
   <!-- InstanceEndEditable -->
 

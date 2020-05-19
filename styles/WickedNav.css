@@ -59,7 +59,7 @@ body {
 	height: 100%;
 }
 a, a:visited {
-	color:#afc7d4;
+	color:#A8EBE9;
 	text-decoration:none;
 }
 hr {
@@ -91,8 +91,8 @@ html, body {
 }
 /* button styles */
 .wickedForm input[type=submit], .button {
-	border:2px #afc7d4 solid;
-	color:#afc7d4!important; border-radius:0;
+	border:2px #A8EBE9 solid;
+	color:#A8EBE9!important; border-radius:0;
 	text-transform:uppercase;
 	cursor:pointer; display:inline-block;
 	padding:10px; margin:10px;
@@ -121,7 +121,7 @@ form { margin:auto; padding-top:20px; }
 }
 .wickedForm input[type="text"]:focus, .wickedForm textarea:focus {
   outline: none;
-  border-bottom: solid 3px #afc7d4;
+  border-bottom: solid 3px #A8EBE9;
 }
 /* NAVIGATION */
 .wn_containerWrapper {
@@ -155,7 +155,7 @@ form { margin:auto; padding-top:20px; }
 	left: 0;
 	bottom: 0;
 	position: fixed;
-	font-size: 3.5em;
+	font-size: 3.0em;
 	margin-left: 22px; /* set this to 1/2 of the .wn_container width minus 1/2 of the font size to center it */
 	color: #333;
 	/* ROTATE TEXT from CSS Tricks */
@@ -311,11 +311,11 @@ form { margin:auto; padding-top:20px; }
 }
 /* HEADER */
 .header {
-	background-color: #4b8db1;
+	background-color: #f5c924;
 	padding: 30px 30px 0 330px;
 }
 .header h1 {
-	color: #fff;
+	color: #000;
 	font-size: 3.5em;
 	text-align: center;
 	margin: 0;   text-transform: uppercase;
@@ -341,7 +341,7 @@ form { margin:auto; padding-top:20px; }
 	margin-bottom: 15px; line-height:1.2em;
 }
 .content a, .content a:visited, .content a:active {
-	color: #afc7d4;
+	color: #A8EBE9;
 	text-decoration: none;
 }
 /* FOOTER */

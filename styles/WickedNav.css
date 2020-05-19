@@ -81,13 +81,13 @@ html, body {
 }
 .crop-height {
   max-height: 180px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 .scale {
   display: block;
   max-width: 100%; min-width:300px!important;
   height: auto !important;
-  -ms-interpolation-mode: bicubic; 
+  -ms-interpolation-mode: bicubic;
 }
 /* button styles */
 .wickedForm input[type=submit], .button {
@@ -96,7 +96,7 @@ html, body {
 	text-transform:uppercase;
 	cursor:pointer; display:inline-block;
 	padding:10px; margin:10px;
-	font-weight:700; letter-spacing: 0.08em; background-color: transparent;	
+	font-weight:700; letter-spacing: 0.08em; background-color: transparent;
   font-family: 'Raleway', sans-serif;
   font-size: 16px; min-width:250px;
 }
@@ -113,7 +113,7 @@ form { margin:auto; padding-top:20px; }
   font-size: 16px;
   appearance: none;
   box-shadow: none;
-  border-radius: none;
+  border-radius: 0;
   padding: 10px;
   border: none;
   border-bottom: solid 3px #777;
@@ -155,8 +155,8 @@ form { margin:auto; padding-top:20px; }
 	left: 0;
 	bottom: 0;
 	position: fixed;
-	font-size: 3.0em;
-	margin-left: 22px; /* set this to 1/2 of the .wn_container width minus 1/2 of the font size to center it */
+	font-size: 2.25rem;
+	margin-left: 29px; /* set this to 1/2 of the .wn_container width minus 1/2 of the font size to center it */
 	color: #333;
 	/* ROTATE TEXT from CSS Tricks */
 	/* Rotate from top left corner (not default) */
@@ -202,7 +202,7 @@ form { margin:auto; padding-top:20px; }
 	transition: .25s ease-in-out;
 }
 #wn_hamburger span:nth-child(1) {
-	top: 0px;
+	top: 0;
 }
 #wn_hamburger span:nth-child(2) {
 	top: 8px;
@@ -254,7 +254,6 @@ form { margin:auto; padding-top:20px; }
 	background-color: #fff;
 	-webkit-transition: all .5s ease;
 	-moz-transition: all .5s ease;
-	-ms-transition: all .5s ease;
 	-o-transition: all .5s ease;
 	transition: all .5s ease;
 	cursor: pointer;
@@ -366,121 +365,146 @@ form { margin:auto; padding-top:20px; }
 
 /* TABLET */
 @media all and (max-width: 768px) {
-.wn_containerWrapper {
-	width: 100px;
-}
-.header, .main, .footer {
-	padding: 30px 30px 30px 130px;
-}
-.header h1 {
-	font-size: 3.0em;
-}
-/* MOBILE & SMALL SCREENS */
-@media all and (max-width: 480px) {
-.main p { margin:10px; }
-.header h1 {
-	font-size: 2.0em; margin-top:20px;
-}
-.wn_containerWrapper {
-width:100%;
-}
-.wn_containerWrapper {
- top: 0;
- left: 0;
- right: 0;
- height: 90px;
-width:100%;
-position:absolute;
- background: #FFF none;
-}
-.wn_container {
- background-color: #fff;
- color: #333;
-height: 90px;
-width:100%;
- position: absolute;
- top: 0;
- left: 0;
- right: 0;
-}
-.wn_title {
- width: 100%;
-line-height:80px;
- top: 0;
- position: absolute;
- font-size: 1.5em;
- margin: 5px;
-	/* undo rotation */
-	-webkit-transform-origin: 0 0;
- -moz-transform-origin: 0 0;
- -ms-transform-origin: 0 0;
- -o-transform-origin: 0 0;
- -webkit-transform: rotate(0);
- -moz-transform: rotate(0);
- -ms-transform: rotate(0);
- -o-transform: rotate(0);
-}
-.wn_menu {
-float:right;
-margin-right: 5px;
- color:#555;
-}
- #wn_hamburger span {
- background: #555;
-}
-.wn_expandedMenu {
- padding: 90px 0;
- width: 100%;
- height: 100%;
- opacity:1;
-}
-.wn_expandedMenu ul {
- padding-top:0;
-}
-.wn_expandedMenu ul li {
- text-align:center;
- border-bottom: 1px solid #333;
-}
-.wn_social {
-width: 100%;
-background-color: #FFF;
-opacity: 1;
-position: relative;
-padding-top: 40px;
-height: 170px;
-margin-top: 20px;
-}
-.header, .main, .footer {
-padding: 5px;
-}
-.header {
-padding-top: 100px;
-}
-.footer, .main {
-padding-top:20px;
-}
-.footer .wf_text_right, .footer {
-text-align:center!important;
-}
-}
-/* triangle bg */
-.triangle {
-	overflow: hidden;
-	position: absolute;
-	width: 100%;
-}
-/* TABLET (LANDSCAPE) & SMALL DESKTOPS */
-@media all and (max-width: 479px) {
-.triangle {
-	position: relative;
-}
-}
-.triangle svg {
-	display: block;
-}
-svg#bigTriangleColor {
-	pointer-events: none;
-}
-#bigTriangleColor path {
-	stroke-width: 2;
+	.wn_containerWrapper {
+		width: 100px;
+	}
+
+	.header, .main, .footer {
+		padding: 30px 30px 30px 130px;
+	}
+
+	.header h1 {
+		font-size: 3.0em;
+	}
+
+	/* MOBILE & SMALL SCREENS */
+	@media all and (max-width: 480px) {
+		.main p {
+			margin: 10px;
+		}
+
+		.header h1 {
+			font-size: 2.0em;
+			margin-top: 20px;
+		}
+
+		.wn_containerWrapper {
+			width: 100%;
+		}
+
+		.wn_containerWrapper {
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 90px;
+			width: 100%;
+			position: absolute;
+			background: #FFF none;
+		}
+
+		.wn_container {
+			background-color: #fff;
+			color: #333;
+			height: 90px;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
+
+		.wn_title {
+			width: 100%;
+			line-height: 80px;
+			top: 0;
+			position: absolute;
+			font-size: 1.5em;
+			margin: 5px;
+			/* undo rotation */
+			-webkit-transform-origin: 0 0;
+			-moz-transform-origin: 0 0;
+			-ms-transform-origin: 0 0;
+			-o-transform-origin: 0 0;
+			-webkit-transform: rotate(0);
+			-moz-transform: rotate(0);
+			-ms-transform: rotate(0);
+			-o-transform: rotate(0);
+		}
+
+		.wn_menu {
+			float: right;
+			margin-right: 5px;
+			color: #555;
+		}
+
+		#wn_hamburger span {
+			background: #555;
+		}
+
+		.wn_expandedMenu {
+			padding: 90px 0;
+			width: 100%;
+			height: 100%;
+			opacity: 1;
+		}
+
+		.wn_expandedMenu ul {
+			padding-top: 0;
+		}
+
+		.wn_expandedMenu ul li {
+			text-align: center;
+			border-bottom: 1px solid #333;
+		}
+
+		.wn_social {
+			width: 100%;
+			background-color: #FFF;
+			opacity: 1;
+			position: relative;
+			padding-top: 40px;
+			height: 170px;
+			margin-top: 20px;
+		}
+
+		.header, .main, .footer {
+			padding: 5px;
+		}
+
+		.header {
+			padding-top: 100px;
+		}
+
+		.footer, .main {
+			padding-top: 20px;
+		}
+
+		.footer .wf_text_right, .footer {
+			text-align: center !important;
+		}
+	}
+	/* triangle bg */
+	.triangle {
+		overflow: hidden;
+		position: absolute;
+		width: 100%;
+	}
+
+	/* TABLET (LANDSCAPE) & SMALL DESKTOPS */
+	@media all and (max-width: 479px) {
+		.triangle {
+			position: relative;
+		}
+	}
+	.triangle svg {
+		display: block;
+	}
+
+	svg#bigTriangleColor {
+		pointer-events: none;
+	}
+
+	#bigTriangleColor path {
+		stroke-width: 2;
+	}
 }
